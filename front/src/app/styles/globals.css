@@ -147,10 +147,11 @@
 }
 
 html,
+header,
 body {
   padding: 0;
   margin: 0;
-  font-family: var(--vazir-font);
+  font-family: var(--font-raleway);
   min-height: 100vh;
   user-select: none;
   background-color: rgb(var(--background-app-rgb));

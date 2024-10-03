@@ -15,6 +15,10 @@ module.exports = {
   darkMode: ["class", '[class="dark-mode"]'],
   theme: {
     extend: {
+      backgroundImage: {
+        "background-pattern":
+          "url('/clouds-sky.jpg')",
+      },
       colors: {
         primary: {
           900: withOpacity("--color-primary-900"),
@@ -45,7 +49,7 @@ module.exports = {
         error: withOpacity("--color-error"),
       },
       fontFamily: {
-        sans: ["var(--font-vazir)", ...fontFamily.sans],
+        sans: ["var(--font-raleway)", ...fontFamily.sans],
       },
       container: {
         center: true,

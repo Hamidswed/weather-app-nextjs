@@ -43,11 +43,11 @@ const WeatherData = ({ city }) => {
   const iconUrl = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
 
   return (
-    <div className="mt-4 flex items-center justify-between">
+    <div className="mt-4 flex items-center justify-between sm:max-w-sm backdrop-blur-md px-4 rounded-lg">
       <div>
-        <h2>{weatherData?.name}</h2>
-        <p>Temperature: {fahrenheitToCentigrade(weatherData?.main.temp)} °C</p>
-        <p>Weather: {weatherData?.weather[0].description}</p>
+        <h2 className="font-bold">{weatherData?.name}</h2>
+        <p><span className="text-3xl">{weatherData?.main.temp}</span>°C</p>
+        <p>{weatherData?.weather[0].description}</p>
       </div>
       <div>
         <img src={iconUrl} alt={weatherData.weather[0].description} />

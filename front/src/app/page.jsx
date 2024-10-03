@@ -9,10 +9,13 @@ const HomePage = () => {
   const [city, setCity] = useState("");
 
   return (
-    <div className="container mx-auto px-6 py-8">
-      <h1 className="mb-4">Welcome to the Home Page</h1>
-      <SearchCity setCity={setCity}/>
-      <WeatherData city={city}/>
+    <div className="w-full mx-auto">
+      <header className="relative py-10 bg-background-pattern bg-cover bg-center max-h-64 w-full overflow-hidden">
+        <div className="container relative z-10">
+          <SearchCity setCity={setCity} />
+          <WeatherData city={city} />
+        </div>
+      </header>
     </div>
   );
 };
