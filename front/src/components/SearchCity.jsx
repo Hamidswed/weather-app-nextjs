@@ -1,14 +1,24 @@
-import useWeather from "@/hooks/useWeather";
+import { getWeatherData } from "@/services/weatherService";
 import { Icon } from "@iconify/react";
+import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
 
-const SearchCity = ({ setCity, city }) => {
-  const { fetchWeatherByCity, setError } = useWeather(city);
-  const handleSubmit = (e) => {
-    // e.preventDefault();
-    console.log("submitted");
-    if (city !== "") {
-      fetchWeatherByCity();
-    } else setError("Please enter a city");
+const SearchCity = ({ setCity }) => {
+  const [inputCity, setInputCity] = useState("");
+  // const { mutateAsync, isPending } = useMutation({
+  //   mutationFn: getWeatherData,
+  // });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    e.preventDefault();
+    setCity(inputCity);
+    // try {
+    //   const data = await mutateAsync(city);
+    //   console.log("data in search", data);
+    //   setCity("");
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
   return (
     <div className="sm:max-w-sm mb-2">
@@ -17,10 +27,10 @@ const SearchCity = ({ setCity, city }) => {
           <input
             type="text"
             name="city"
-            value={city}
+            defaultValue={inputCity}
             placeholder="Enter city name"
             className="px-4 py-1 w-full"
-            onChange={(e) => setCity(e.target.value)}
+            onChange={(e) => setInputCity(e.target.value)}
           />
 
           <button
