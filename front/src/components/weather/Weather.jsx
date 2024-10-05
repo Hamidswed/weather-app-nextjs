@@ -1,14 +1,20 @@
-import Loading from "./Loading";
-import fahrenheitToCentigrade from "@/utils/fahrenToCenti";
 import { useMutation } from "@tanstack/react-query";
 import { getWeatherData } from "@/services/weatherService";
 import { toast } from "react-hot-toast";
 import { useEffect, useState } from "react";
+import WeatherData from "./WeatherData";
+import Loading from "../Loading";
+import WeatherDetail from "./WeatherDetail";
+import WeatherSun from "./WeatherSun";
 
-const WeatherData = ({ city }) => {
+const Weather = ({ city }) => {
   const [weatherData, setWeatherData] = useState(null);
-  const { mutateAsync, isPending } = useMutation({
+  const { mutateAsync, isPending, error } = useMutation({
     mutationFn: getWeatherData,
+    onError: (error) => {
+      console.error("Error fetching weather data:", error.message);
+      toast.error("Failed to fetch weather data. Please try again.");
+    },
   });
 
   useEffect(() => {
@@ -32,28 +38,22 @@ const WeatherData = ({ city }) => {
       } else {
         toast.error("Geolocation is not supported by this browser.");
       }
-    } catch (error) {
-      toast.error(error);
+    } catch (err) {
+      console.error("Unexpected error:", err);
+      toast.error("An unexpected error occurred. Please try again.");
     }
   }, [city, mutateAsync]);
 
-  if (isPending) return <Loading />;
+  if (isPending) return <Loading color="rgb(var(--color-secondary-0))" />;
   if (!weatherData) return null;
 
-  const iconUrl = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
-
   return (
-    <div className="mt-4 flex items-center justify-between sm:max-w-sm backdrop-blur-md px-4 rounded-lg">
-      <div>
-        <h2 className="font-bold">{weatherData?.name}</h2>
-        <p><span className="text-3xl">{weatherData?.main.temp}</span>°C</p>
-        <p>{weatherData?.weather[0].description}</p>
-      </div>
-      <div>
-        <img src={iconUrl} alt={weatherData.weather[0].description} />
-      </div>
+    <div className="mt-4 w-full grid grid-cols-1 gap-4 justify-items-center lg:grid-cols-3">
+      <WeatherData weatherData={weatherData} />
+      <WeatherDetail weatherData={weatherData} />
+      <WeatherSun weatherData={weatherData} />
     </div>
   );
 };
 
-export default WeatherData;
+export default Weather;

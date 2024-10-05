@@ -16,8 +16,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "background-pattern":
-          "url('/clouds-sky.jpg')",
+        "background-pattern": "url('/clouds-sky.jpg')",
       },
       colors: {
         primary: {
@@ -49,7 +48,7 @@ module.exports = {
         error: withOpacity("--color-error"),
       },
       fontFamily: {
-        sans: ["var(--font-raleway)", ...fontFamily.sans],
+        sans: ["var(--font-poppins)", ...fontFamily.sans],
       },
       container: {
         center: true,

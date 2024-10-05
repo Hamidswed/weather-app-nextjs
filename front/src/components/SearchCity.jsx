@@ -15,7 +15,7 @@ const SearchCity = ({ setCity }) => {
   };
 
   return (
-    <div className="sm:max-w-sm mb-2">
+    <div className="sm:max-w-sm mb-2 w-full">
       <form onSubmit={handleSubmit}>
         <div className="relative flex items-center justify-between shadow-md rounded-full overflow-hidden">
           <input
@@ -23,7 +23,7 @@ const SearchCity = ({ setCity }) => {
             name="city"
             value={inputCity}
             placeholder="Enter city name"
-            className="px-4 py-1 w-full"
+            className="px-4 py-2 w-full"
             onChange={(e) => setInputCity(e.target.value)}
           />
 
@@ -31,14 +31,14 @@ const SearchCity = ({ setCity }) => {
             <button
               type="button"
               onClick={handleClick}
-              className="absolute right-0 px-2 text-secondary-300"
+              className="absolute right-0 px-2 text-secondary-400"
             >
               <Icon icon="ic:round-close" width={20} />
             </button>
           ) : (
             <button
               type="submit"
-              className="absolute right-0 px-2 text-secondary-300"
+              className="absolute right-0 px-2 text-secondary-400"
             >
               <Icon icon="uil:search" width={20} />
             </button>
