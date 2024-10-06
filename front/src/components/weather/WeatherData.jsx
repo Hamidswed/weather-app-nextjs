@@ -20,7 +20,7 @@ const WeatherData = ({ weatherData }) => {
           <p>{weatherData?.weather[0].description}</p>
         </div>
         <p className="flex items-start text-amber-400">
-          <span className="text-5xl">{weatherData?.main.temp}</span>
+          <span className="text-5xl">{Math.round(weatherData?.main.temp)}</span>
           <span>°C</span>
         </p>
         <div className="hidden min-[400px]:block ">

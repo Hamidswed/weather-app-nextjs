@@ -9,8 +9,8 @@ const WeatherDetail = ({ weatherData }) => {
           <li>humidity</li>
         </ul>
         <ul className="space-y-1 font-medium">
-          <li>:&nbsp;{weatherData.main.temp_min}</li>
-          <li>:&nbsp;{weatherData.main.temp_max}</li>
+          <li>:&nbsp;{Math.round(weatherData.main.temp_min)}</li>
+          <li>:&nbsp;{Math.round(weatherData.main.temp_max )}</li>
           <li>:&nbsp;{weatherData.main.pressure}</li>
           <li>:&nbsp;{weatherData.main.humidity}</li>
         </ul>
